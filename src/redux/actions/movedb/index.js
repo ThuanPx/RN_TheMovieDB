@@ -1,17 +1,17 @@
 import types from '../../types';
 
 export const fetching = payload => ({
-  types: types.moviedb.fetching,
+  type: types.moviedb.fetching,
   payload,
 });
 
 export const fetchingSuccess = payload => ({
-  types: types.moviedb.fetchingSuccess,
+  type: types.moviedb.fetchingSuccess,
   payload,
 });
 
 export const fetchingError = payload => ({
-  types: types.moviedb.fetchingError,
+  type: types.moviedb.fetchingError,
   payload,
 });
 

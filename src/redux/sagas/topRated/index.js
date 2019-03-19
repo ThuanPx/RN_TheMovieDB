@@ -1,11 +1,12 @@
 import { put, call, takeLatest } from 'redux-saga/effects';
 import request from '../../../base/network';
 import types from '../../types';
+import { KEY_API } from '../../../utils/constants';
 
 function requestUrl() {
   return request({
     method: 'GET',
-    url: 'movie/top_rated/page=1',
+    url: `movie/top_rated?api_key=${KEY_API}&page=1`,
   });
 }
 
