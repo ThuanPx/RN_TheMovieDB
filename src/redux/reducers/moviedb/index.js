@@ -1,9 +1,9 @@
 import types from '../../types';
 
-
 const initState = {
   isFetching: false,
   isError: false,
+  movies: {},
 };
 
 const moviedbReducer = (state = initState, { type, payload }) => {
@@ -20,6 +20,7 @@ const moviedbReducer = (state = initState, { type, payload }) => {
         ...state,
         isFetching: false,
         isError: false,
+        movies: payload.movies,
       };
     case types.upcoming.fetchingError:
       return {
