@@ -1,7 +1,11 @@
 import React, { PureComponent } from 'react';
 import { Text, SafeAreaView } from 'react-native';
 
-class Home extends PureComponent {
+class Upcoming extends PureComponent {
+  static navigationOptions = {
+    title: 'UpComing',
+  }
+
   render() {
     return (
       <SafeAreaView>
@@ -11,4 +15,4 @@ class Home extends PureComponent {
   }
 }
 
-export default Home;
+export default Upcoming;

@@ -1,12 +1,12 @@
 /* eslint-disable */
 import axios from 'axios';
-import constants from '../../utils/constants';
+import { BASE_URL } from '../../utils/constants';
 
 /**
  * Create an Axios Client with defaults
  */
 const client = axios.create({
-    baseUrl: constants.baseUrl,
+    baseUrl: BASE_URL,
     headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
 });
 

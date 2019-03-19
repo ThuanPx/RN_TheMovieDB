@@ -7,12 +7,17 @@
  */
 
 import React, { Component } from 'react';
-import Home from './src/features/Home';
+import { Provider } from 'react-redux';
+import store from './src/redux/store';
+import AppContainer from './src/base/navigation';
+
 
 export default class App extends Component {
   render() {
     return (
-      <Home />
+      <Provider store={store}>
+        <AppContainer />
+      </Provider>
     );
   }
 }

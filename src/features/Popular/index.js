@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Text, SafeAreaView } from 'react-native';
 
-class Home extends PureComponent {
+class Popular extends PureComponent {
   render() {
     return (
       <SafeAreaView>
@@ -11,4 +11,4 @@ class Home extends PureComponent {
   }
 }
 
-export default Home;
+export default Popular;
