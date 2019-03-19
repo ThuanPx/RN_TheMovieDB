@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
-import { Text, SafeAreaView } from 'react-native';
+import { Text, SafeAreaView, Button } from 'react-native';
 import { connect } from 'react-redux';
-import { fetching } from '../../redux/actions/movedb';
+import { fetching } from '../../redux/actions/upcoming';
 
 class Upcoming extends PureComponent {
   static navigationOptions = {
@@ -9,13 +9,19 @@ class Upcoming extends PureComponent {
   }
 
   componentDidMount() {
-    this.props.fetchUpcoming();
+    // this.props.fetchUpcoming();
   }
+
 
   render() {
     return (
       <SafeAreaView>
         <Text>Hello</Text>
+        <Button title='ok'
+          onPress={() => {
+            this.props.fetchUpcoming();
+          }}
+        />
       </SafeAreaView>
     );
   }
@@ -30,5 +36,3 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Upcoming);
-
-// export default Upcoming;

@@ -1,8 +1,6 @@
-import { all } from 'redux-saga/effects';
-import topRated from './topRated';
+import { all, fork } from 'redux-saga/effects';
+import moviedb from './moviedb';
 
 export default function* rootSaga() {
-  yield all([
-    topRated(),
-  ]);
+  yield all([...moviedb.map(watcher => fork(watcher))]);
 }

@@ -7,21 +7,21 @@ const initState = {
 };
 
 const moviedbReducer = (state = initState, { type, payload }) => {
-  console.log('moviedbReducer', JSON.stringify(payload));
+  console.log('upcoming', JSON.stringify(payload));
   switch (type) {
-    case types.moviedb.fetching:
+    case types.upcoming.fetching:
       return {
         ...state,
         isFetching: true,
         isError: false,
       };
-    case types.moviedb.fetchingSuccess:
+    case types.upcoming.fetchingSuccess:
       return {
         ...state,
         isFetching: false,
         isError: false,
       };
-    case types.moviedb.fetchingError:
+    case types.upcoming.fetchingError:
       return {
         ...state,
         isFetching: false,

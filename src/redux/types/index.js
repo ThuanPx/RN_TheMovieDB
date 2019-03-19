@@ -1,5 +1,5 @@
-import moviedb from './moviedb';
+import upcoming from './upcoming';
 
 export default {
-  moviedb,
+  upcoming,
 };
