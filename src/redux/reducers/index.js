@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import moviedbReducer from './moviedb';
+import upcomingReducer from './upcoming';
+import topratedReducer from './toprated';
 
 const rootReducer = combineReducers({
-  upcoming: moviedbReducer,
+  upcoming: upcomingReducer,
+  toprated: topratedReducer,
 });
 
 export default rootReducer;

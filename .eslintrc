@@ -24,7 +24,13 @@
         "import/prefer-default-export": "off",
         "no-console": "warn",
         "react/prop-types": "off",
-        "import/no-named-as-default-member": "off"
+        "import/no-named-as-default-member": "off",
+        "no-underscore-dangle": [
+            2,
+            {
+                "allowAfterThis": true
+            }
+        ]
     },
     "env": {
         "jest": true

@@ -1,13 +1,13 @@
 import { put, call } from 'redux-saga/effects';
 import api from '../../../../base/network';
 import { KEY_API } from '../../../../utils/constants';
-import { fetchingSuccess, fetchingError } from '../../../actions/upcoming';
+import { fetchingSuccess, fetchingError } from '../../../actions/toprated';
 
 
-function* fetchUpcomingSaga() {
+function* fetchTopRatedSaga() {
   try {
     const response = yield yield call(
-      api.get, `movie/upcoming?api_key=${KEY_API}&page=1`,
+      api.get, `movie/top_rated?api_key=${KEY_API}&page=1`,
     );
     console.log('response', response);
     if (response && response.status === 200) {
@@ -34,10 +34,10 @@ function jsonToObject(it) {
   };
 }
 
-export default function* fetchUpcoming(action) {
+export default function* fetchToprated(action) {
   console.log('upcoming', action);
   try {
-    const movies = yield call(fetchUpcomingSaga);
+    const movies = yield call(fetchTopRatedSaga);
     console.log('data', movies);
     yield put(fetchingSuccess({ movies }));
   } catch (error) {

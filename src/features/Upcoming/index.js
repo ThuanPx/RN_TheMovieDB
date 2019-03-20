@@ -3,43 +3,43 @@ import { Text, SafeAreaView, ActivityIndicator } from 'react-native';
 import { connect } from 'react-redux';
 import { fetching } from '../../redux/actions/upcoming';
 import FlatListMovies from '../../component/FlatListMovies';
-
+import Loading from '../../component/Loading';
+import NoDataView from '../../component/NoDataView';
+import { BACKGROUND } from '../../utils/color';
 
 class Upcoming extends PureComponent {
   static navigationOptions = {
     title: 'UpComing',
   }
 
-
   componentDidMount() {
     this.props.fetchUpcoming();
   }
 
+  _onPressItem = (id) => {
+    console.log('id ', id);
+  }
 
   render() {
     console.log(this.props.upcoming);
     if (this.props.upcoming.isFetching) {
-      return this.renderLoading();
+      return <Loading />;
     }
 
-    return this.renderMovies();
+    if (this.props.upcoming.movies && this.props.upcoming.movies.length > 0) {
+      return <FlatListMovies
+        onPressItem={this._onPressItem}
+        movies={this.props.upcoming.movies}
+      />;
+    }
+
+    return <NoDataView />;
   }
 
   renderMovies() {
     return (
-      <SafeAreaView>
+      <SafeAreaView style={{ backgroundColor: BACKGROUND }}>
         <FlatListMovies movies={this.props.upcoming.movies} />
-      </SafeAreaView>
-    );
-  }
-
-  renderLoading() {
-    return (
-      <SafeAreaView>
-        <ActivityIndicator animating={true}
-          color="#F44336"
-          style={{ height: 80, marginTop: 10 }}
-          size="large" />
       </SafeAreaView>
     );
   }

@@ -6,23 +6,23 @@ const initState = {
   movies: {},
 };
 
-const moviedbReducer = (state = initState, { type, payload }) => {
-  console.log('upcoming', JSON.stringify(payload));
+const topratedReducer = (state = initState, { type, payload }) => {
+  console.log('topratedReducer', JSON.stringify(payload));
   switch (type) {
-    case types.upcoming.fetching:
+    case types.toprated.fetching:
       return {
         ...state,
         isFetching: true,
         isError: false,
       };
-    case types.upcoming.fetchingSuccess:
+    case types.toprated.fetchingSuccess:
       return {
         ...state,
         isFetching: false,
         isError: false,
         movies: payload.movies,
       };
-    case types.upcoming.fetchingError:
+    case types.toprated.fetchingError:
       return {
         ...state,
         isFetching: false,
@@ -33,4 +33,4 @@ const moviedbReducer = (state = initState, { type, payload }) => {
   }
 };
 
-export default moviedbReducer;
+export default topratedReducer;
