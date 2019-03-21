@@ -1,22 +1,19 @@
 import { put, call } from 'redux-saga/effects';
 import api from '../../../../base/network';
 import { KEY_API } from '../../../../utils/constants';
-import { fetchingSuccess, fetchingError } from '../../../actions/toprated';
+import { fetchingSuccess, fetchingError } from '../../../actions/detailmovie';
 
-
-function* fetchTopRatedSaga() {
+function* fetchMovieSaga(movieId) {
   try {
-    const response = yield yield call(
-      api.get, `movie/top_rated?api_key=${KEY_API}&page=1`,
-    );
+    const response = yield yield call(api.get, `movie/${movieId}?api_key=${KEY_API}`);
     console.log('response', response);
     if (response && response.status === 200) {
-      const data = response.data.results;
-      const movie = data.map(it => jsonToObject(it));
+      const jsonMovie = response.data;
+      const movie = jsonToObject(jsonMovie);
       return movie;
     }
-  } catch (e) {
-    console.log(e);
+  } catch (error) {
+    console.log(error);
   }
   return null;
 }
@@ -34,12 +31,13 @@ function jsonToObject(it) {
   };
 }
 
-export default function* fetchToprated(action) {
-  console.log('upcoming', action);
+export default function* fetchMovie(action) {
+  console.log('detialmovie', action);
+  const movieId = action.payload;
   try {
-    const movies = yield call(fetchTopRatedSaga);
-    console.log('data', movies);
-    yield put(fetchingSuccess({ movies }));
+    const movie = yield call(fetchMovieSaga, movieId);
+    console.log('data', movie);
+    yield put(fetchingSuccess({ movie }));
   } catch (error) {
     console.log(error);
     yield put(fetchingError({}));

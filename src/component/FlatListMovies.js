@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import {
-  View, Image, Text, FlatList, TouchableOpacity,
+  View, Image, Text, FlatList, TouchableHighlight,
 } from 'react-native';
 import { BASE_URL_IMAGE } from '../utils/constants';
 import { BLACK_PEARL, AMBER, BACKGROUND } from '../utils/color';
 
 
-class FlatListMovies extends Component {
+class FlatListMovies extends PureComponent {
   _onPress = (id) => {
     this.props.onPressItem(id);
   }
@@ -24,7 +24,7 @@ class FlatListMovies extends Component {
 
   renderItemMovie(it) {
     return (
-      <TouchableOpacity onPress={this._onPress(it.id)}>
+      <TouchableHighlight onPress={() => this._onPress(it.id)}>
         <View style={{
           flex: 1,
           flexDirection: 'row',
@@ -72,7 +72,7 @@ class FlatListMovies extends Component {
           </View>
 
         </View>
-      </TouchableOpacity>
+      </TouchableHighlight>
     );
   }
 }

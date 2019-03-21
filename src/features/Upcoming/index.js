@@ -17,7 +17,9 @@ class Upcoming extends PureComponent {
   }
 
   _onPressItem = (id) => {
-    console.log('id ', id);
+    this.props.navigation.navigate('DetailMovie', {
+      movieId: id,
+    });
   }
 
   render() {
