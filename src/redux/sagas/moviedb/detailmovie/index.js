@@ -28,6 +28,7 @@ function jsonToObject(it) {
     vote: it.vote_average,
     releaseDate: it.release_date,
     video: it.video,
+    genres: it.genres,
   };
 }
 
